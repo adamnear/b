@@ -124,6 +124,16 @@
         return femaleNames;
     }
 
+    const getEpisodeTitles = (data) => {
+        const episodes = data._embedded.episodes;
+
+        //Filter episodes to find when Ursula is in the episode
+        const ursulaEpisodes = episodes.filter((episode) => {
+            return episode.summary && episode.summary.includes('Ursula');
+        });
+
+
+    }
 
 
 })();
