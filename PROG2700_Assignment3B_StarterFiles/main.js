@@ -91,9 +91,20 @@
 
             const runtime = episode.runtime;
             if (runtime) {
+                //Extract the minutes as an integer in base 10
+                const minutes = parseInt(runtime, 10);
+                //Check is minutes returned a number
+                if (!isNaN(minutes)) {
+                    total += minutes
+                }
             }
-        }
+            return total;
+        }, 0);
+        return totalRuntimeMinutes;
+    }
 
-    
+
+
+
 })();
 
