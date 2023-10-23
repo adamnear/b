@@ -139,7 +139,7 @@
     }
 
     const getCastMembersOver55 = (data) => {
-        const cast = data._embedded.episodes;
+        const cast = data._embedded.cast;
 
         // Get the current date to calculate ages.
         const currentDate = new Date();
@@ -148,12 +148,22 @@
         const castMembersOver55 = cast.filter((member) => {
             if (member.person.birthday) {
                 //convert their birthday to a sting of dates
-                const birthDat = new DataTransfer(member.person.birthday);
+                const birthDate = new Date(member.person.birthday);
+
+                // Calculate the age in years.
+                const ageInMilliseconds = currentDate - birthDate;
+                const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365); // Milliseconds to years
+
+                return ageInYears > 55;
             }
-        })
+            return false;
+        });
+
+        // Use the map method to extract and return the names of the filtered cast members
+        const castMemberNames = castMembersOver55.map((member) => member.person.name);
+
+        return castMemberNames;
     }
-
-
 
 })();
 
