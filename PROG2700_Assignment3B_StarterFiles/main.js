@@ -84,8 +84,16 @@
         return guntherEpisodes.length;
     }
 
+    const getTotalRuntimeMinutes = (data) => {
+        const episodes = data._embedded.episodes;
+        //Use reduce method to add up the total runtime of all episodes
+        const totalRuntimeMinutes = episodes.reduce((total, episode) => {
 
+            const runtime = episode.runtime;
+            if (runtime) {
+            }
+        }
 
-
+    
 })();
 
