@@ -202,6 +202,25 @@
         return episodeInfo;
     }
 
+    const getEpisodeTallyBySeason = (data) => {
+        const episodes = data._embedded.episodes;
+
+        // Use the reduce method to accumulate the episode counts by season
+        const tallyBySeason = episodes.reduce((tally, episode) => {
+            const season = episode.season;
+
+            if (season) {
+                // If the season is already in the tally, increment the count; otherwise, initialize it to 1.
+                tally[season] = (tally[season] || 0) + 1;
+            }
+
+            return tally;
+        }, {});
+
+        return tallyBySeason;
+    }
+
+
 
 })();
 
