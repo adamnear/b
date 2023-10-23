@@ -112,6 +112,19 @@
         return totalEpisodesInYear.length;
     }
 
+    const getFemaleCastMembers = (data) => {//NOT WORKING
+        const cast = data._embedded.episodes;
+
+        //filter method to filter female cast members
+        const femaleCastMembers = cast.filter((member) => member.person && member.person.gender === 'Female');
+
+        //map method to extract and return the names of female cast members
+        const femaleNames = femaleCastMembers.map((member) => member.person.name);
+
+        return femaleNames;
+    }
+
+
 
 })();
 
