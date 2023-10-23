@@ -192,7 +192,14 @@
 
         const firstFourSeasonsEpisodes = episodes.filter((episode) => {
             return episode.season >= 1 && episode.season <= 4;
-        })
+        });
+
+        //Create an array of JSON Objects with the map method
+        const episodeInfo = firstFourSeasonsEpisodes.map((episode) => ({
+            season: episode.season,
+            name: episode.name,
+        }));
+        return episodeInfo;
     }
 
 
