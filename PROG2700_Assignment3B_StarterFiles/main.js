@@ -220,7 +220,22 @@
         return tallyBySeason;
     }
 
-
-
+    const capitalizeTheFriends = (data) => {//not working
+        const modifiedData = JSON.parse(JSON.stringify(data));
+        const friendsCharacters = ["Joey", "Chandler", "Monica", "Rachel", "Phoebe", "Ross"];
+        // Create a regular expression to match any of the character names (case-insensitive).
+        const regex = new RegExp(friendsCharacters.join("|"), "gi");
+        modifiedData._embedded.episodes.forEach((episode) => {
+            if (episode.name) {
+                // Capitalize character names in the episode name using the regular expression.
+                episode.name = episode.name.replace(regex, (match) => match.toUpperCase());
+            }
+            if (episode.summary) {
+                // Capitalize character names in the episode summary using the regular expression.
+                episode.summary = episode.summary.replace(regex, (match) => match.toUpperCase());
+            }
+        });
+        return modifiedData;
+    }
 })();
 
