@@ -187,5 +187,14 @@
         return totalRuntimeMinutes;
     }
 
+    const getFirstFourSeasons = (data) => {
+        const episodes = data._embedded.episodes;
+
+        const firstFourSeasonsEpisodes = episodes.filter((episode) => {
+            return episode.season >= 1 && episode.season <= 4;
+        })
+    }
+
+
 })();
 
