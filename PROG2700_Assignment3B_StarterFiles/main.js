@@ -132,7 +132,10 @@
             return episode.summary && episode.summary.includes('Ursula');
         });
 
+        //map method to create an array of the titles of the filtered episodes
+        const episodeTitles = ursulaEpisodes.map((episode) => episode.name);
 
+        return episodeTitles;
     }
 
 
