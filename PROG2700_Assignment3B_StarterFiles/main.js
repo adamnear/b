@@ -138,6 +138,22 @@
         return episodeTitles;
     }
 
+    const getCastMembersOver55 = (data) => {
+        const cast = data._embedded.episodes;
+
+        // Get the current date to calculate ages.
+        const currentDate = new Date();
+
+        // Use the filter method to filter cast members who are older than 55.
+        const castMembersOver55 = cast.filter((member) => {
+            if (member.person.birthday) {
+                //convert their birthday to a sting of dates
+                const birthDat = new DataTransfer(member.person.birthday);
+            }
+        })
+    }
+
+
 
 })();
 
