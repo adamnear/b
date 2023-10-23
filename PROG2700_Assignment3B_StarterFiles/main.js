@@ -103,7 +103,14 @@
         return totalRuntimeMinutes;
     }
 
+    const getTotalEpisodesInYear = (data) => {
+        const episodes = data._embedded.episodes;
 
+        const totalEpisodesInYear = episodes.filter((episode) => {
+            return episode.airdate && episode.airdate.includes('2000');
+        });
+        return totalEpisodesInYear.length;
+    }
 
 
 })();
