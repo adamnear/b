@@ -165,5 +165,27 @@
         return castMemberNames;
     }
 
+    const getTotalRuntimeMinutesExcludingSeasonSix = (data) => {
+        const episodes = data._embedded.episodes;
+        //Filter out season 6
+        const totalRuntimeMinutesExcludingSeasonSix = episodes.filter((episode) => {
+            return episode.season !== 6;
+        });
+
+        const totalRuntimeMinutes = totalRuntimeMinutesExcludingSeasonSix.reduce((total, episode) => {
+            const runtime = episode.runtime;
+            if (runtime) {
+                //Extract the minutes as an integer in base 10
+                const minutes = parseInt(runtime, 10);
+                //Check is minutes returned a number
+                if (!isNaN(minutes)) {
+                    total += minutes
+                }
+            }
+            return total;
+        }, 0);
+        return totalRuntimeMinutes;
+    }
+
 })();
 
