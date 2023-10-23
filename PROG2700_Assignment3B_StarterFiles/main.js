@@ -84,65 +84,6 @@
         return guntherEpisodes.length;
     }
 
-    const getTotalRuntimeMinutes = (data) => {
-        const episodes = data._embedded.episodes;
-        //Use reduce method to add up the total runtime of all episodes
-        const totalRuntimeMinutes = episodes.reduce((total, episode) => {
-
-            const runtime = episode.runtime;
-            if (runtime) {
-                //Extract the minutes as an integer in base 10
-                const minutes = parseInt(runtime, 10);
-                //Check is minutes returned a number
-                if (!isNaN(minutes)) {
-                    total += minutes
-                }
-            }
-            return total;
-        }, 0);
-        return totalRuntimeMinutes;
-    }
-
-    const getTotalEpisodesInYear = (data) => {
-        const episodes = data._embedded.episodes;
-
-        const totalEpisodesInYear = episodes.filter((episode) => {
-            return episode.airdate && episode.airdate.includes('2000');
-        });
-        return totalEpisodesInYear.length;
-    }
-
-    const getFemaleCastMembers = (data) => {//NOT WORKING
-        const cast = data._embedded.episodes;
-
-        //filter method to filter female cast members
-        const femaleCastMembers = cast.filter((member) => member.person && member.person.gender === 'Female');
-
-        //map method to extract and return the names of female cast members
-        const femaleNames = femaleCastMembers.map((member) => member.person.name);
-
-        return femaleNames;
-    }
-
-    const getEpisodeTitles = (data) => {
-        const episodes = data._embedded.episodes;
-
-        //Filter episodes to find when Ursula is in the episode
-        const ursulaEpisodes = episodes.filter((episode) => {
-            return episode.summary && episode.summary.includes('Ursula');
-        });
-
-        //map method to create an array of the titles of the filtered episodes
-        const episodeTitles = ursulaEpisodes.map((episode) => episode.name);
-
-        return episodeTitles;
-    }
-
-    const getCastMembersOver55 = (data) => {
-        const cast = data._embedded.episodes;
-
-
-    }
 
 
 
